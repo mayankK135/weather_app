@@ -15,13 +15,13 @@ const API_KEY="1f359f0f735d02a192cf28c52bd837e4";
 oldTab.classList.add("current-tab");
 //const URL_for_ref=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`;
 
-//getfromSessionStorage();
+getfromSessionStorage();
 
 
 
 //handling tab change
 
-function swithTab(clickedTab){
+function swithTab(newTab){
     if(newTab!=oldTab){
         oldTab.classList.remove("current-tab");
         oldTab=newTab;
@@ -98,14 +98,14 @@ function renderWeatherInfo(weatherInfo){
 
     //fetch value from weather info and insert in ui
 
-    cityName.inerText=weatherInfo?.name;
+    cityName.innerText=weatherInfo?.name;
     countryIcon.src= `https://flagcdn.com/144x108/${weatherInfo?.sys?.country.toLowerCase()}.png`;
     desc.innerText=weatherInfo?.weather[0]?.description;
     weatherIcon.src=`http://openweathermap.org/img/w/${weatherInfo?.weather?.[0]?.icon}.png`;
-    temp.innerText=weatherInfo?.main?.temp;
-    windSpeed.innerText=weatherInfo?.wind?.speed;
-    humidity.innerText=weatherInfo?.main?.humidity;
-    cloudiness.innerText=weatherInfo?.clouds?.all;
+    temp.innerText=`${weatherInfo?.main?.temp} °C`;
+    windSpeed.innerText=`${weatherInfo?.wind?.speed} m/s`;
+    humidity.innerText=`${weatherInfo?.main?.humidity} %`;
+    cloudiness.innerText=`${weatherInfo?.clouds?.all} %`;
 }
 
 //applying listner on grant access button
